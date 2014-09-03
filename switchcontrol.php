@@ -1,8 +1,8 @@
 <?php
-// Systemcode
+// Systemcode: Depreciated since using US outlet
 $systemCode = "01110";
 
-// Get parameter
+// Parameters
 $getSwitch = $_GET['switch'];
 $getTargetState = $_GET['state'];
 $livingRoomLights = 0;
@@ -11,7 +11,7 @@ $onstate = 1;
 $getSwitch1 = $_GET['switch1'];
 $getSwitch2 = $_GET['switch2'];
 
-// Make it safe
+// Safer
 switch($getSwitch) {
 	case "a":
 		$switch = 1;
@@ -40,7 +40,7 @@ switch($getSwitch) {
 		die("ERROR");
 }
 
-// Call rcswitch
+// Execute rcswitch send
 if($getTargetState === '1') {
 	shell_exec('sudo /home/pi/div/rcswitch-pi/send '.$switch.' 1');
 	echo "SUCCESS";
@@ -54,6 +54,7 @@ if($getTargetState === '1') {
 		shell_exec('sudo /home/pi/div/rcswitch-pi/send '.$switch1.' '.$rand1.'');
 		shell_exec('sudo /home/pi/div/rcswitch-pi/send '.$switch2.' '.$rand2.'');
 
+		//For more aethetics?
 		//shell_exec('sudo /home/pi/div/rcswitch-pi/send '.$switch1.' 1');
 		//shell_exec('sudo /home/pi/div/rcswitch-pi/send '.$switch2.' 1');
 	}

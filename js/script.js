@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	// Serverstatus 
+	// Status of the raspberry pi
 	$.serverObserver.enable({
 		url: "http://192.168.1.13",
 		frequency: 2000,
@@ -13,10 +13,10 @@ $(document).ready(function() {
 	});
 
 
-	// Buttons
+	// Each button has a letter identifier
 	$('.switchButton').each(function(index, button) {
 		button = $(button);
-		// Get letter
+		// Get letter, currently from range of a-g
 		var regexSwitchID = /switch-([a-g])/;
 		var switchID = regexSwitchID.exec(button.attr('class'))[1];
 		
@@ -67,6 +67,7 @@ function callSwitchControl(switchID, state) {
 		});
 }
 
+//Possible future feature
 function callSwagControl(switchID1, switchID2, state) {
 	$.get( 'switchcontrol.php', {
 			'switch1': switchID1,
